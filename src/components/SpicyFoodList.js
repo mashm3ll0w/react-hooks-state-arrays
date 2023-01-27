@@ -10,8 +10,22 @@ function SpicyFoodList() {
     setFoods(newFoodArray)
   }
 
+  // function handleLiClick(id) {
+  //   const newFoodArray = foods.filter((food) => food.id !== id);
+  //   setFoods(newFoodArray);
+  // }
+
   function handleLiClick(id) {
-    const newFoodArray = foods.filter((food) => food.id !== id);
+    const newFoodArray = foods.map((food) => {
+      if (food.id === id) {
+        return {
+          ...food,
+          heatLevel: food.heatLevel + 1,
+        };
+      } else {
+        return food;
+      }
+    });
     setFoods(newFoodArray);
   }
   const foodList = foods.map((food) => (
